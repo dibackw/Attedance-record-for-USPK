@@ -2,7 +2,7 @@
     "teachers": [
       {
         "id": "1",
-        "login": "teacher1",
+        "login": "teacher",
         "password": "teacher123",
         "fullName": "Смирнов Алексей Владимирович"
       }
@@ -16,7 +16,16 @@
         "groupId": 1
       }
     ],
-    "groups": [],
+    "groups": [
+      { "id": 1, "name": "ИС11" },
+      { "id": 2, "name": "ИС21" },
+      { "id": 3, "name": "ИС22к" },
+      { "id": 4, "name": "ИС12к" },
+      { "id": 5, "name": "КС11" },
+      { "id": 6, "name": "КС21" },
+      { "id": 7, "name": "КС12к" },
+      { "id": 8, "name": "КС22к" }
+    ],
     "disciplines": [],
     "attendance": [],
     "polls": []

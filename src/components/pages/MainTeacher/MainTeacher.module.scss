@@ -1,0 +1,15 @@
+.page {
+    // Flexbox: сайдбар слева, контент справа — в одну строку
+    display: flex;
+    flex-direction: row;
+    // Страница на весь экран
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .content {
+    // Контент занимает всё оставшееся место справа от сайдбара
+    flex: 1;
+    background-color: var(--BG1);
+    padding: 24px;
+  }

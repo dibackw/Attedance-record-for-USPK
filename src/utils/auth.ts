@@ -9,6 +9,7 @@ export type { User, UserRole };
 export const setAuth = (user: User, token: string) => {
   localStorage.setItem(TOKEN_KEY, token);
   localStorage.setItem(USER_KEY, JSON.stringify(user));
+  localStorage.setItem('role', user.role); // ← добавь эту строку
 };
 
 /** Получить токен текущей сессии */
@@ -39,4 +40,5 @@ export const isAuthenticated = (): boolean => getToken() !== null;
 export const logout = () => {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(USER_KEY);
+  localStorage.removeItem('role'); // ← добавь это
 };

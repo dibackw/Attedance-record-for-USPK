@@ -1,8 +1,8 @@
-// router.tsx
 import { Routes, Route, Navigate } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { Login } from '../components/pages/login/login.tsx';
-import  MainStudent  from '../components/pages/MainStudent/MainStudent.tsx';
+import MainStudent from '../components/pages/MainStudent/MainStudent.tsx';
+import MainTeacher from '../components/pages/MainTeacher/MainTeacher.tsx';
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -36,12 +36,20 @@ export const Router = () => {
         }
       />
 
-      {/* Маршрут студента — был закомментирован, теперь активен */}
       <Route
         path="/student"
         element={
           <ProtectedRoute role="student">
-            <MainStudent />  {/* замените на StudentDashboard, когда создадите */}
+            <MainStudent />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/teacher"
+        element={
+          <ProtectedRoute role="teacher">
+            <MainTeacher />
           </ProtectedRoute>
         }
       />

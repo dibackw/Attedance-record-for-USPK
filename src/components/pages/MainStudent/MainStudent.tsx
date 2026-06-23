@@ -5,9 +5,9 @@ import Header from '../../ui/Header/Header';
 const MainStudent = () => {
   return (
     <div className={styles.page}>
-      <Sidebar />
+      <Sidebar role='student' />
       <main className={styles.content}>
-        <Header />
+        <Header role='student' />
       </main>
     </div>
   );

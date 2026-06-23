@@ -3,26 +3,37 @@ import { getUser } from '../../../utils/auth';
 import styles from './Header.module.scss';
 import personIcon from '../../../assets/person.svg';
 
-// Функция для сокращения ФИО: "Кузнецов Артём Александрович" → "Кузнецов А. А."
+// Функция: "Кузнецов Артём Александрович" → "Кузнецов А. А."
 const getInitials = (fullName: string): string => {
   const parts = fullName.trim().split(' ');
   if (parts.length < 3) return fullName;
   return `${parts[0]} ${parts[1][0]}. ${parts[2][0]}.`;
 };
 
-const Header = () => {
-  const user = getUser(); // берём пользователя из localStorage
+interface HeaderProps {
+  role: 'student' | 'teacher';
+}
+
+const Header = ({ role }: HeaderProps) => {
+  const user = getUser();
   const [groupName, setGroupName] = useState<string>('');
 
   useEffect(() => {
-    // Запрашиваем название группы по groupId
-    if (user?.groupId) {
+    // Группу запрашиваем только для студента
+    if (role === 'student' && user?.groupId) {
       fetch(`/api/groups/${user.groupId}`)
         .then(res => res.json())
         .then(group => setGroupName(group.name))
         .catch(() => setGroupName(''));
     }
   }, []);
+
+  // Подпись под именем — разная для студента и преподавателя
+  const subText = role === 'student'
+    ? `Студент, группа ${groupName}`
+    : 'Преподаватель';
+
+  const roleLabel = role === 'student' ? 'Студент' : 'Преподаватель';
 
   return (
     <header className={styles.header}>
@@ -33,7 +44,7 @@ const Header = () => {
           Добро пожаловать, {user?.fullName}.
         </h1>
         <p className={styles.welcomeSub}>
-          Студент, группа {groupName}
+          {subText}
         </p>
       </div>
 
@@ -43,9 +54,8 @@ const Header = () => {
           <span className={styles.profileName}>
             {user ? getInitials(user.fullName) : ''}
           </span>
-          <span className={styles.profileRole}>Студент</span>
+          <span className={styles.profileRole}>{roleLabel}</span>
         </div>
-        {/* Иконка пользователя SVG */}
         <img src={personIcon} alt="Профиль" className={styles.profileIcon} />
       </div>
 

@@ -4,7 +4,8 @@ import styles from "./login.module.scss";
 import logoImg from "../../../assets/logo.jpg"; // путь поправь под структуру своего проекта
 import Input from "../../ui/input/input";
 import Button from "../../ui/button/button";
-import { login as loginUser } from "../../utils/auth"; // путь поправь под структуру своего проекта
+import { authenticateUser, generateToken } from "../../../services/authService";
+import { setAuth } from "../../../utils/auth";
 
 export function Login() {
   const [login, setLogin] = useState("");
@@ -13,31 +14,27 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-
-    if (!login || !password) {
-      setError("Заполните логин и пароль");
-      return;
-    }
-
     setLoading(true);
 
-    // Имитация запроса на сервер: сервера пока нет,
-    // поэтому "грузимся" 800мс и потом проверяем локально.
-    // Когда появится backend — замени этот setTimeout на настоящий fetch/axios.
-    setTimeout(() => {
-      const role = loginUser(login, password);
-      setLoading(false);
+    try {
+      const user = await authenticateUser(login, password);
 
-      if (!role) {
+      if (!user) {
         setError("Неверный логин или пароль");
         return;
       }
 
-      navigate(role === "teacher" ? "/teacher" : "/student");
-    }, 800);
+      setAuth(user, generateToken());
+      navigate(user.role === "teacher" ? "/teacher" : "/student");
+    } catch (err) {
+      console.error("РЕАЛЬНАЯ ОШИБКА:", err);
+      setError("Не удалось подключиться к серверу. Запустите npm run dev");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

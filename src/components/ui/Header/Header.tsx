@@ -3,7 +3,6 @@ import { getUser } from '../../../utils/auth';
 import styles from './Header.module.scss';
 import personIcon from '../../../assets/person.svg';
 
-// Функция: "Кузнецов Артём Александрович" → "Кузнецов А. А."
 const getInitials = (fullName: string): string => {
   const parts = fullName.trim().split(' ');
   if (parts.length < 3) return fullName;
@@ -11,16 +10,21 @@ const getInitials = (fullName: string): string => {
 };
 
 interface HeaderProps {
-  role: 'student' | 'teacher';
+  role: 'student' | 'teacher' | 'headman';
 }
 
 const Header = ({ role }: HeaderProps) => {
   const user = getUser();
+  const today = new Date().toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
   const [groupName, setGroupName] = useState<string>('');
 
   useEffect(() => {
-    // Группу запрашиваем только для студента
-    if (role === 'student' && user?.groupId) {
+    // Группу запрашиваем для студента и старосты
+    if ((role === 'student' || role === 'headman') && user?.groupId) {
       fetch(`/api/groups/${user.groupId}`)
         .then(res => res.json())
         .then(group => setGroupName(group.name))
@@ -28,27 +32,20 @@ const Header = ({ role }: HeaderProps) => {
     }
   }, []);
 
-  // Подпись под именем — разная для студента и преподавателя
-  const subText = role === 'student'
-    ? `Студент, группа ${groupName}`
-    : 'Преподаватель';
-
-  const roleLabel = role === 'student' ? 'Студент' : 'Преподаватель';
-
+  const roleLabel = role === 'teacher'
+    ? 'Преподаватель'
+    : role === 'headman'
+    ? `Староста, группа ${groupName}`
+    : `Студент, группа ${groupName}`;
   return (
     <header className={styles.header}>
-
-      {/* Левая часть — приветствие */}
       <div className={styles.welcome}>
         <h1 className={styles.welcomeTitle}>
           Добро пожаловать, {user?.fullName}.
         </h1>
-        <p className={styles.welcomeSub}>
-          {subText}
-        </p>
+        <p className={styles.welcomeSub}>{today}</p>
       </div>
 
-      {/* Правая часть — инициалы + иконка */}
       <div className={styles.profile}>
         <div className={styles.profileInfo}>
           <span className={styles.profileName}>
@@ -58,7 +55,6 @@ const Header = ({ role }: HeaderProps) => {
         </div>
         <img src={personIcon} alt="Профиль" className={styles.profileIcon} />
       </div>
-
     </header>
   );
 };

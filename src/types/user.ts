@@ -1,4 +1,4 @@
-export type UserRole = "student" | "teacher";
+export type UserRole = "student" | "teacher" | "headman";
 
 /** Данные пользователя после входа (без пароля) */
 export interface User {
@@ -24,4 +24,5 @@ export interface DbStudent {
   password: string;
   fullName: string;
   groupId: number;
+  role?: 'student' | 'headman';
 }

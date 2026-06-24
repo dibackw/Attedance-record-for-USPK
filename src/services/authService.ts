@@ -51,7 +51,7 @@ const findStudent = async (
 
   const { password: _, ...profile } = student;
 
-  return { ...profile, role: "student" };
+  return { ...profile, role: student.role ?? "student" };
 };
 
 /**

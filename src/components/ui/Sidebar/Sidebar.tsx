@@ -5,7 +5,7 @@ import { logout } from '../../../utils/auth';
 
 // Пропсы — параметры которые передаём в компонент снаружи
 interface SidebarProps {
-  role: 'student' | 'teacher'; // роль определяет какие пункты показывать
+  role: 'student' | 'teacher' | 'headman'; // роль определяет какие пункты показывать
 }
 
 const Sidebar = ({ role }: SidebarProps) => {
@@ -27,7 +27,10 @@ const Sidebar = ({ role }: SidebarProps) => {
       {/* Главная — одинакова для всех */}
       <NavLink
         to="/"
-        className={styles.mainHeading}
+        end
+        className={({ isActive }) =>
+          isActive ? `${styles.mainHeading} ${styles.active}` : styles.mainHeading
+        }
       >
         Главная
       </NavLink>
@@ -40,8 +43,7 @@ const Sidebar = ({ role }: SidebarProps) => {
             <NavLink to="/attendance" className={({ isActive }) =>
               isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
             }>
-              Моя посещаемость
-            </NavLink>
+              Моя группа</NavLink>
 
             <NavLink to="/surveys" className={({ isActive }) =>
               isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
@@ -88,6 +90,30 @@ const Sidebar = ({ role }: SidebarProps) => {
             }>
               Профиль
             </NavLink>
+          </>
+        )}
+
+        {role === 'headman' && (
+          <>
+            <NavLink to="/attendance" className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+            }>Моя группа</NavLink>
+
+            <NavLink to="/surveys" className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+            }>Опросы</NavLink>
+
+            <NavLink to="/tabel" className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+            }>Табели</NavLink>
+
+            <NavLink to="/reports" className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+            }>Отчеты</NavLink>
+
+            <NavLink to="/profile" className={({ isActive }) =>
+              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
+            }>Профиль</NavLink>
           </>
         )}
 

@@ -28,7 +28,11 @@ export function Login() {
       }
 
       setAuth(user, generateToken());
-      navigate(user.role === "teacher" ? "/teacher" : "/student");
+      navigate(
+        user.role === "teacher" ? "/teacher" :
+        user.role === "headman" ? "/headman" :
+        "/student"
+      );
     } catch (err) {
       console.error("РЕАЛЬНАЯ ОШИБКА:", err);
       setError("Не удалось подключиться к серверу. Запустите npm run dev");

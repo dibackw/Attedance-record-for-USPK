@@ -3,15 +3,16 @@ import type { ReactNode } from 'react';
 import { Login } from '../components/pages/login/login.tsx';
 import MainStudent from '../components/pages/MainStudent/MainStudent.tsx';
 import MainTeacher from '../components/pages/MainTeacher/MainTeacher.tsx';
+import MainHeadman from '../components/pages/MainHeadman/MainHeadman.tsx';
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  role?: 'student' | 'teacher';
+  role?: 'student' | 'teacher' | 'headman';
 }
 
 const ProtectedRoute = ({ children, role }: ProtectedRouteProps) => {
   const isAuthenticated = localStorage.getItem('token') !== null;
-  const userRole = localStorage.getItem('role') as 'student' | 'teacher' | null;
+  const userRole = localStorage.getItem('role') as 'student' | 'teacher' | 'headman' | null;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -20,6 +21,13 @@ const ProtectedRoute = ({ children, role }: ProtectedRouteProps) => {
     return <Navigate to="/" replace />;
   }
   return <>{children}</>;
+};
+
+const RoleRedirect = () => {
+  const role = localStorage.getItem('role');
+  if (role === 'teacher') return <Navigate to="/teacher" replace />;
+  if (role === 'headman') return <Navigate to="/headman" replace />;
+  return <Navigate to="/student" replace />;
 };
 
 export const Router = () => {
@@ -31,7 +39,7 @@ export const Router = () => {
         path="/"
         element={
           <ProtectedRoute>
-            <MainStudent />
+            <RoleRedirect />
           </ProtectedRoute>
         }
       />
@@ -50,6 +58,15 @@ export const Router = () => {
         element={
           <ProtectedRoute role="teacher">
             <MainTeacher />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/headman"
+        element={
+          <ProtectedRoute role="headman">
+            <MainHeadman />
           </ProtectedRoute>
         }
       />

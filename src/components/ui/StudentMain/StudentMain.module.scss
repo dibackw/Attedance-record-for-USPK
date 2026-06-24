@@ -1,0 +1,140 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  // ===== Шапка "Моя посещаемость" =====
+  .titleBlock {
+    padding: 20px 40px;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  // ===== Блок с таблицей и статистикой =====
+  .mainBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 0px 40px 20px 40px;
+    align-items: flex-start;
+  }
+  
+  // ===== Таблица =====
+  .tableWrapper {
+    flex: 1;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .th {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: center;
+  }
+  
+  .td {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: center;
+  }
+  
+  // ===== Статистика =====
+  .statsWrapper {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .statsTitle {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0 0 16px 0;
+  }
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 20px;
+    row-gap: 16px;
+  }
+  
+  .statLabel {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .statValue {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+  }
+  
+  .statValueGreen {
+    color: var(--Gren);
+  }
+  
+  // ===== Баннер опроса =====
+  .pollBlock {
+    padding: 20px 40px 30px 40px;
+  }
+  
+  .pollBanner {
+    background-color: var(--greenBG);
+    border: 1px solid var(--Gren);
+    border-radius: 8px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .pollTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--Gren);
+    margin: 0;
+  }
+  
+  .pollSub {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  .pollActive {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--Gren);
+    margin: 0;
+  }

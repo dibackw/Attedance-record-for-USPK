@@ -14,19 +14,27 @@
         "password": "student123",
         "fullName": "Кузнецов Артём Александрович",
         "groupId": 1
+      },
+      {
+        "id": "3",
+        "login": "headman1",
+        "password": "headman123",
+        "fullName": "Весельчук Ульяна Романовна",
+        "groupId": 1,
+        "role": "headman"
       }
     ],
-    "groups": [
-      { "id": 1, "name": "ИС11" },
-      { "id": 2, "name": "ИС21" },
-      { "id": 3, "name": "ИС22к" },
-      { "id": 4, "name": "ИС12к" },
-      { "id": 5, "name": "КС11" },
-      { "id": 6, "name": "КС21" },
-      { "id": 7, "name": "КС12к" },
-      { "id": 8, "name": "КС22к" }
+      "groups": [
+      { "id": 1, "name": "ИС11", "course": 1, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 2, "name": "ИС21", "course": 2, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 3, "name": "ИС22к", "course": 2, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 4, "name": "ИС12к", "course": 1, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 5, "name": "КС11", "course": 1, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 6, "name": "КС21", "course": 2, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 7, "name": "КС12к", "course": 1, "educationForm": "Очная", "curatorId": "1" },
+      { "id": 8, "name": "КС22к", "course": 2, "educationForm": "Очная", "curatorId": "1" }
     ],
-    "disciplines": [],
-    "attendance": [],
-    "polls": []
-  }
+      "disciplines": [],
+      "attendance": [],
+      "polls": []
+    }

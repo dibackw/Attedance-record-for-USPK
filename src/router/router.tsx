@@ -4,6 +4,9 @@ import { Login } from '../components/pages/login/login.tsx';
 import MainStudent from '../components/pages/MainStudent/MainStudent.tsx';
 import MainTeacher from '../components/pages/MainTeacher/MainTeacher.tsx';
 import MainHeadman from '../components/pages/MainHeadman/MainHeadman.tsx';
+import MyGroupPage from '../components/pages/MyGroup/MyGroupPage';
+import ProfilePage from '../components/pages/ProfilePage/ProfilePage';
+
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -67,6 +70,22 @@ export const Router = () => {
         element={
           <ProtectedRoute role="headman">
             <MainHeadman />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/mygroup"
+        element={
+          <ProtectedRoute>
+            <MyGroupPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         }
       />

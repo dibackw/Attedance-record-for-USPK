@@ -11,9 +11,10 @@ const getInitials = (fullName: string): string => {
 
 interface HeaderProps {
   role: 'student' | 'teacher' | 'headman';
+  pageTitle?: string; // название раздела — необязательный пропс
 }
 
-const Header = ({ role }: HeaderProps) => {
+const Header = ({ role, pageTitle }: HeaderProps) => {
   const user = getUser();
   const today = new Date().toLocaleDateString('ru-RU', {
     day: 'numeric',
@@ -23,7 +24,6 @@ const Header = ({ role }: HeaderProps) => {
   const [groupName, setGroupName] = useState<string>('');
 
   useEffect(() => {
-    // Группу запрашиваем для студента и старосты
     if ((role === 'student' || role === 'headman') && user?.groupId) {
       fetch(`/api/groups/${user.groupId}`)
         .then(res => res.json())
@@ -37,13 +37,24 @@ const Header = ({ role }: HeaderProps) => {
     : role === 'headman'
     ? `Староста, группа ${groupName}`
     : `Студент, группа ${groupName}`;
+
   return (
     <header className={styles.header}>
       <div className={styles.welcome}>
-        <h1 className={styles.welcomeTitle}>
-          Добро пожаловать, {user?.fullName}.
-        </h1>
-        <p className={styles.welcomeSub}>{today}</p>
+        {/* Если есть pageTitle — показываем его, иначе приветствие */}
+        {pageTitle ? (
+          <>
+            <h1 className={styles.welcomeTitle}>Посещаемость УСПК. {pageTitle}</h1>
+            <p className={styles.welcomeSub}>{today}</p>
+          </>
+        ) : (
+          <>
+            <h1 className={styles.welcomeTitle}>
+              Добро пожаловать, {user?.fullName}.
+            </h1>
+            <p className={styles.welcomeSub}>{today}</p>
+          </>
+        )}
       </div>
 
       <div className={styles.profile}>

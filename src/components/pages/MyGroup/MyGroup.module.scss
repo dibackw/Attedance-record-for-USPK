@@ -1,0 +1,78 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .titleBlock {
+    padding: 20px 40px;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  // Блок с информацией о группе
+  .infoBlock {
+    margin: 0 40px 20px 40px;
+    border: 1px solid var(--strokePanel);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .infoCell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .infoLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text2);
+  }
+  
+  .infoValue {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .greenValue {
+    color: var(--Gren);
+    font-weight: 600;
+  }
+  
+  // Таблица
+  .tableWrapper {
+    margin: 0 40px 40px 40px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .th {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: left;
+  }
+  
+  .td {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: left;
+  }

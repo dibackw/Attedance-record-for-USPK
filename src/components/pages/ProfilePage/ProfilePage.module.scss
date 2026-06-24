@@ -1,0 +1,85 @@
+.wrapper {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .table {
+    border: 1px solid var(--strokePanel);
+    border-radius: 10px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    width: 600px;
+  }
+  
+  .label {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--strokePanel);
+    width: 180px;
+    background-color: var(--BG1);
+  }
+  
+  .value {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--strokePanel);
+  }
+  
+  tr:last-child .label,
+  tr:last-child .value {
+    border-bottom: none;
+  }
+  
+  .input {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    border-radius: 6px;
+    padding: 8px 12px;
+    width: 100%;
+    outline: none;
+    background-color: var(--white);
+  
+    &:focus {
+      border-color: var(--heading);
+    }
+  }
+  
+  .passwordRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .eyeBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+  }
+  
+  .saveBtn {
+    width: 600px;
+    padding: 16px;
+    background-color: var(--backgroundOfSub-items);
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  
+    &:hover {
+      opacity: 0.9;
+    }
+  }

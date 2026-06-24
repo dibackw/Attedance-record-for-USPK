@@ -3,9 +3,8 @@ import logo from '../../../assets/logo2F.jpg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../../utils/auth';
 
-// Пропсы — параметры которые передаём в компонент снаружи
 interface SidebarProps {
-  role: 'student' | 'teacher' | 'headman'; // роль определяет какие пункты показывать
+  role: 'student' | 'teacher' | 'headman';
 }
 
 const Sidebar = ({ role }: SidebarProps) => {
@@ -16,6 +15,15 @@ const Sidebar = ({ role }: SidebarProps) => {
     navigate('/login');
   };
 
+  // Определяем путь главной по роли
+const homePath = role === 'teacher' ? '/teacher' 
+: role === 'headman' ? '/headman' 
+: '/student';
+
+  // Каждый пункт — отдельный блок со своим фоном
+  const navClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? styles.navItemActive : styles.navItemDefault;
+
   return (
     <aside className={styles.sidebar}>
 
@@ -24,104 +32,47 @@ const Sidebar = ({ role }: SidebarProps) => {
         <img src={logo} alt="Логотип УСПК" className={styles.logo} />
       </div>
 
-      {/* Главная — одинакова для всех */}
-      <NavLink
-        to="/"
-        end
-        className={({ isActive }) =>
-          isActive ? `${styles.mainHeading} ${styles.active}` : styles.mainHeading
-        }
-      >
+      {/* Главная */}
+      <NavLink to={homePath} className={navClass}>
         Главная
       </NavLink>
 
-      {/* Навигационное меню — разное для студента и преподавателя */}
-      <nav className={styles.navBlock}>
+      {/* Студент */}
+      {role === 'student' && (
+        <>
+          <NavLink to="/mygroup" className={navClass}>Моя группа</NavLink>
+          <NavLink to="/surveys" className={navClass}>Опросы</NavLink>
+          <NavLink to="/profile" className={navClass}>Профиль</NavLink>
+        </>
+      )}
 
-        {role === 'student' && (
-          <>
-            <NavLink to="/attendance" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Моя группа</NavLink>
+      {/* Преподаватель */}
+      {role === 'teacher' && (
+        <>
+          <NavLink to="/groups" className={navClass}>Группы</NavLink>
+          <NavLink to="/surveys" className={navClass}>Опросы</NavLink>
+          <NavLink to="/tabel" className={navClass}>Табели</NavLink>
+          <NavLink to="/reports" className={navClass}>Отчеты</NavLink>
+          <NavLink to="/profile" className={navClass}>Профиль</NavLink>
+        </>
+      )}
 
-            <NavLink to="/surveys" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Опросы
-            </NavLink>
+      {/* Староста */}
+      {role === 'headman' && (
+        <>
+          <NavLink to="/mygroup" className={navClass}>Моя группа</NavLink>
+          <NavLink to="/surveys" className={navClass}>Опросы</NavLink>
+          <NavLink to="/tabel" className={navClass}>Табели</NavLink>
+          <NavLink to="/reports" className={navClass}>Отчеты</NavLink>
+          <NavLink to="/profile" className={navClass}>Профиль</NavLink>
+        </>
+      )}
 
-            <NavLink to="/profile" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Профиль
-            </NavLink>
-          </>
-        )}
+      {/* Выход */}
+      <button onClick={handleLogout} className={styles.navItemDefault}>
+        Выход
+      </button>
 
-        {role === 'teacher' && (
-          <>
-            <NavLink to="/groups" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Группы
-            </NavLink>
-
-            <NavLink to="/surveys" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Опросы
-            </NavLink>
-
-            <NavLink to="/tabel" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Табели
-            </NavLink>
-
-            <NavLink to="/reports" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Отчеты
-            </NavLink>
-
-            <NavLink to="/profile" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>
-              Профиль
-            </NavLink>
-          </>
-        )}
-
-        {role === 'headman' && (
-          <>
-            <NavLink to="/attendance" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>Моя группа</NavLink>
-
-            <NavLink to="/surveys" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>Опросы</NavLink>
-
-            <NavLink to="/tabel" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>Табели</NavLink>
-
-            <NavLink to="/reports" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>Отчеты</NavLink>
-
-            <NavLink to="/profile" className={({ isActive }) =>
-              isActive ? `${styles.navItem} ${styles.active}` : styles.navItem
-            }>Профиль</NavLink>
-          </>
-        )}
-
-        <button onClick={handleLogout} className={styles.navItem}>
-          Выход
-        </button>
-
-      </nav>
     </aside>
   );
 };

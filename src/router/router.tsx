@@ -6,7 +6,7 @@ import MainTeacher from '../components/pages/MainTeacher/MainTeacher.tsx';
 import MainHeadman from '../components/pages/MainHeadman/MainHeadman.tsx';
 import MyGroupPage from '../components/pages/MyGroup/MyGroupPage';
 import ProfilePage from '../components/pages/ProfilePage/ProfilePage';
-
+import TeacherPolls from '../components/pages/TeacherPolls/TeacherPolls';
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -86,6 +86,14 @@ export const Router = () => {
         element={
           <ProtectedRoute>
             <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/surveys"
+        element={
+          <ProtectedRoute>
+            <TeacherPolls />
           </ProtectedRoute>
         }
       />

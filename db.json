@@ -1,40 +1,178 @@
 {
-    "teachers": [
-      {
-        "id": "1",
-        "login": "teacher",
-        "password": "teacher123",
-        "fullName": "Смирнов Алексей Владимирович"
-      }
-    ],
-    "students": [
-      {
-        "id": "1",
-        "login": "student1",
-        "password": "student123",
-        "fullName": "Кузнецов Артём Александрович",
-        "groupId": 1
-      },
-      {
-        "id": "3",
-        "login": "headman1",
-        "password": "headman123",
-        "fullName": "Весельчук Ульяна Романовна",
-        "groupId": 1,
-        "role": "headman"
-      }
-    ],
-      "groups": [
-      { "id": 1, "name": "ИС11", "course": 1, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 2, "name": "ИС21", "course": 2, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 3, "name": "ИС22к", "course": 2, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 4, "name": "ИС12к", "course": 1, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 5, "name": "КС11", "course": 1, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 6, "name": "КС21", "course": 2, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 7, "name": "КС12к", "course": 1, "educationForm": "Очная", "curatorId": "1" },
-      { "id": 8, "name": "КС22к", "course": 2, "educationForm": "Очная", "curatorId": "1" }
-    ],
-      "disciplines": [],
-      "attendance": [],
-      "polls": []
+  "teachers": [
+    {
+      "id": "1",
+      "login": "teacher",
+      "password": "teacher123",
+      "fullName": "Смирнов Алексей Владимирович"
     }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "login": "student1",
+      "password": "student123",
+      "fullName": "Кузнецов Артём Александрович",
+      "groupId": 1
+    },
+    {
+      "id": "3",
+      "login": "headman1",
+      "password": "headman123",
+      "fullName": "Весельчук Ульяна Романовна",
+      "groupId": 1,
+      "role": "headman"
+    }
+  ],
+  "groups": [
+    {
+      "id": "1",
+      "name": "ИС11",
+      "course": 1,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "2",
+      "name": "ИС21",
+      "course": 2,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "3",
+      "name": "ИС22к",
+      "course": 2,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "4",
+      "name": "ИС12к",
+      "course": 1,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "5",
+      "name": "КС11",
+      "course": 1,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "6",
+      "name": "КС21",
+      "course": 2,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "7",
+      "name": "КС12к",
+      "course": 1,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    },
+    {
+      "id": "8",
+      "name": "КС22к",
+      "course": 2,
+      "educationForm": "Очная",
+      "curatorId": "1"
+    }
+  ],
+  "attendance": [],
+  "disciplines": [
+    {
+      "id": "1",
+      "name": "Математика"
+    },
+    {
+      "id": "2",
+      "name": "Физика"
+    },
+    {
+      "id": "3",
+      "name": "Русский язык"
+    },
+    {
+      "id": "4",
+      "name": "Литература"
+    },
+    {
+      "id": "5",
+      "name": "Физкультура"
+    },
+    {
+      "id": "6",
+      "name": "Компьютерные сети"
+    },
+    {
+      "id": "7",
+      "name": "Разработка программных модулей"
+    }
+  ],
+  "polls": [
+    {
+      "id": "1",
+      "disciplineId": 7,
+      "groupId": 1,
+      "teacherId": "1",
+      "datetime": "14.05.2026 10:30",
+      "status": "completed",
+      "totalStudents": 25,
+      "responded": 22
+    },
+    {
+      "disciplineId": 1,
+      "groupId": 1,
+      "teacherId": "1",
+      "datetime": "24.06.2026 21:03",
+      "status": "completed",
+      "totalStudents": 25,
+      "responded": 0,
+      "id": "in5veVWOYf4"
+    },
+    {
+      "disciplineId": 7,
+      "groupId": 1,
+      "teacherId": "1",
+      "datetime": "24.06.2026 21:05",
+      "status": "active",
+      "totalStudents": 25,
+      "responded": 0,
+      "id": "B3QK4s-XIWU"
+    },
+    {
+      "disciplineId": 1,
+      "groupId": 2,
+      "teacherId": "1",
+      "datetime": "24.06.2026 21:14",
+      "status": "completed",
+      "totalStudents": 25,
+      "responded": 0,
+      "id": "4gV-41L1QCE"
+    },
+    {
+      "disciplineId": 1,
+      "groupId": 1,
+      "teacherId": "3",
+      "datetime": "24.06.2026 22:27",
+      "status": "completed",
+      "totalStudents": 25,
+      "responded": 0,
+      "id": "IpPWliVOnUw"
+    },
+    {
+      "disciplineId": 2,
+      "groupId": 1,
+      "teacherId": "3",
+      "datetime": "24.06.2026 22:40",
+      "status": "active",
+      "totalStudents": 25,
+      "responded": 0,
+      "id": "JNKlXd2oUjI"
+    }
+  ]
+}

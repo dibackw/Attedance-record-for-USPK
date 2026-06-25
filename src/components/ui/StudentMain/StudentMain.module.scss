@@ -1,140 +1,300 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+// ===== Заголовок =====
+.titleBlock {
+  padding: 20px 40px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--black);
+  margin: 0;
+}
+
+// ===== Баннер опроса =====
+.pollBlock {
+  padding: 0 40px 24px 40px;
+}
+
+// Нет активного опроса
+.noPollBanner {
+  background: var(--BG1);
+  border: 1px solid var(--strokePanel);
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.noPollTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0;
+}
+
+.noPollSub {
+  font-size: 13px;
+  color: var(--text2);
+  margin: 0;
+}
+
+// Активный опрос — белый фон, фиолетовая обводка
+.pollBanner {
+  background-color: var(--white);
+  border: 1.5px solid var(--backgroundOfSub-items);
+  border-radius: 8px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+// "Сейчас идёт опрос" — зелёный как раньше
+.pollTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--IsPresent);
+  margin: 0;
+}
+
+.pollActive {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--IsPresent);
+  margin: 0;
+}
+
+.pollSub {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+  margin: 0;
+}
+
+.pollBtn {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 10px 28px;
+  background: var(--backgroundOfSub-items);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--TheBackgroundOfTheMainPage);
   }
-  
-  // ===== Шапка "Моя посещаемость" =====
-  .titleBlock {
-    padding: 20px 40px;
-  }
-  
-  .title {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--black);
-    margin: 0;
-  }
-  
-  // ===== Блок с таблицей и статистикой =====
-  .mainBlock {
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-    padding: 0px 40px 20px 40px;
-    align-items: flex-start;
-  }
-  
-  // ===== Таблица =====
-  .tableWrapper {
-    flex: 1;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .th {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--black);
-    border: 1px solid var(--strokePanel);
-    padding: 12px 20px;
-    text-align: center;
-  }
-  
-  .td {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--black);
-    border: 1px solid var(--strokePanel);
-    padding: 12px 20px;
-    text-align: center;
-  }
-  
-  // ===== Статистика =====
-  .statsWrapper {
-    width: 280px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .statsTitle {
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--black);
-    margin: 0 0 16px 0;
-  }
-  
-  .statsGrid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: 20px;
-    row-gap: 16px;
-  }
-  
-  .statLabel {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--black);
-    border: 1px solid var(--strokePanel);
-    border-radius: 10px;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .statValue {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--black);
-    border: 1px solid var(--strokePanel);
-    border-radius: 10px;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 70px;
-  }
-  
-  .statValueGreen {
-    color: var(--Gren);
-  }
-  
-  // ===== Баннер опроса =====
-  .pollBlock {
-    padding: 20px 40px 30px 40px;
-  }
-  
-  .pollBanner {
-    background-color: var(--greenBG);
-    border: 1px solid var(--Gren);
-    border-radius: 8px;
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .pollTitle {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--Gren);
-    margin: 0;
-  }
-  
-  .pollSub {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--black);
-    margin: 0;
-  }
-  
-  .pollActive {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--Gren);
-    margin: 0;
-  }
+}
+
+// ===== Таблица + статистика =====
+.mainBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 0 40px 20px 40px;
+  align-items: flex-start;
+}
+
+.tableWrapper {
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  border: 1px solid var(--strokePanel);
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.td {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  border: 1px solid var(--strokePanel);
+  padding: 12px 20px;
+  text-align: center;
+}
+
+// Цвета отметок
+.markPresent { color: var(--IsPresent); font-weight: 700; }
+.markAbsent  { color: var(--therewasno); font-weight: 700; }
+.markReason  { color: var(--ThereIsAReason); font-weight: 700; }
+
+// ===== Статистика =====
+.statsWrapper {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.statsTitle {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--black);
+  margin: 0 0 16px 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 20px;
+  row-gap: 16px;
+}
+
+.statLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  border: 1px solid var(--strokePanel);
+  border-radius: 10px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black);
+  border: 1px solid var(--strokePanel);
+  border-radius: 10px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+}
+
+.statValueGreen {
+  color: var(--Gren);
+}
+
+// ===== Модальное окно =====
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 36px;
+  width: 360px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+// Логотип в модалке
+.modalLogoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--TheBackgroundOfTheMainPage);
+  letter-spacing: 2px;
+}
+
+.modalLogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.modalLogoImg {
+  width: 60px;
+  height: auto;
+}
+
+.modalTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.modalField {
+  width: 100%;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modalLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+.modalInputBox {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--strokePanel);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--black);
+  background: var(--white);
+  box-sizing: border-box;
+}
+
+.modalValue {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.confirmBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 13px;
+  background: var(--backgroundOfSub-items);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover { background: var(--TheBackgroundOfTheMainPage); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.cancelModalBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  background: none;
+  border: 1px solid var(--strokePanel);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--heading);
+  cursor: pointer;
+
+  &:hover { background: var(--lightPurple); }
+}

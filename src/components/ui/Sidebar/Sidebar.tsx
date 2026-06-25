@@ -41,7 +41,7 @@ const homePath = role === 'teacher' ? '/teacher'
       {role === 'student' && (
         <>
           <NavLink to="/mygroup" className={navClass}>Моя группа</NavLink>
-          <NavLink to="/surveys" className={navClass}>Опросы</NavLink>
+          <NavLink to="/polls" className={navClass}>Опросы</NavLink>
           <NavLink to="/profile" className={navClass}>Профиль</NavLink>
         </>
       )}
@@ -49,7 +49,6 @@ const homePath = role === 'teacher' ? '/teacher'
       {/* Преподаватель */}
       {role === 'teacher' && (
         <>
-          <NavLink to="/groups" className={navClass}>Группы</NavLink>
           <NavLink to="/surveys" className={navClass}>Опросы</NavLink>
           <NavLink to="/tabel" className={navClass}>Табели</NavLink>
           <NavLink to="/reports" className={navClass}>Отчеты</NavLink>
@@ -61,7 +60,7 @@ const homePath = role === 'teacher' ? '/teacher'
       {role === 'headman' && (
         <>
           <NavLink to="/mygroup" className={navClass}>Моя группа</NavLink>
-          <NavLink to="/surveys" className={navClass}>Опросы</NavLink>
+          <NavLink to="/polls" className={navClass}>Опросы</NavLink>
           <NavLink to="/tabel" className={navClass}>Табели</NavLink>
           <NavLink to="/reports" className={navClass}>Отчеты</NavLink>
           <NavLink to="/profile" className={navClass}>Профиль</NavLink>

@@ -7,6 +7,9 @@ import MainHeadman from '../components/pages/MainHeadman/MainHeadman.tsx';
 import MyGroupPage from '../components/pages/MyGroup/MyGroupPage';
 import ProfilePage from '../components/pages/ProfilePage/ProfilePage';
 import TeacherPolls from '../components/pages/TeacherPolls/TeacherPolls';
+import TabelPage from '../components/pages/TabelPage/TabelPage';
+import StudentPolls from '../components/pages/StudentPolls/StudentPolls';
+import ReportPage from '../components/pages/ReportPage/ReportPage.tsx';
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -92,8 +95,32 @@ export const Router = () => {
       <Route
         path="/surveys"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute role="teacher">
             <TeacherPolls />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tabel"
+        element={
+          <ProtectedRoute>
+            <TabelPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/polls"
+        element={
+          <ProtectedRoute >
+            <StudentPolls />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/reports"
+        element={
+          <ProtectedRoute>
+            <ReportPage />
           </ProtectedRoute>
         }
       />

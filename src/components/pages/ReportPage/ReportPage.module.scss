@@ -1,0 +1,212 @@
+.wrapper {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .filters {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .filterLabel {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .select {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    border-radius: 8px;
+    padding: 10px 16px;
+    outline: none;
+    background-color: var(--white);
+    min-width: 200px;
+  
+    &:focus { border-color: var(--heading); }
+  }
+  
+  .generateBtn {
+    background-color: var(--backgroundOfSub-items);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    cursor: pointer;
+  
+    &:hover { opacity: 0.9; }
+  }
+  
+  .exportBtn {
+    background-color: var(--white);
+    color: var(--backgroundOfSub-items);
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid var(--backgroundOfSub-items);
+    border-radius: 8px;
+    padding: 10px 24px;
+    cursor: pointer;
+  
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  
+    &:hover:not(:disabled) { background-color: var(--lightPurple); }
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .th {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: left;
+  }
+  
+  .td {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: left;
+  }
+  
+  .markGreen { color: var(--IsPresent); }
+  .markRed { color: var(--therewasno); }
+  .markOrange { color: var(--ThereIsAReason); }
+  
+  .noData {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text2);
+  }
+  
+  // ÐÐ¾Ð´Ð°Ð»ÑÐ½Ð¾Ðµ Ð¾ÐºÐ½Ð¾
+  .modalOverlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modalTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  .closeBtn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text2);
+  }
+  
+  .modalLabel {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .modalInput {
+    font-size: 16px;
+    border: 1px solid var(--strokePanel);
+    border-radius: 8px;
+    padding: 10px 16px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  
+    &:focus { border-color: var(--heading); }
+  }
+  
+  .periodRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .periodLabel {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+  }
+  
+  .modalInputSmall {
+    font-size: 16px;
+    border: 1px solid var(--strokePanel);
+    border-radius: 8px;
+    padding: 10px 12px;
+    outline: none;
+  
+    &:focus { border-color: var(--heading); }
+  }
+  
+  .modalButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  
+  .cancelBtn {
+    background: none;
+    border: 1px solid var(--strokePanel);
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--heading);
+    cursor: pointer;
+  
+    &:hover { background-color: var(--lightPurple); }
+  }
+  .markGreen { color: var(--IsPresent); }
+  .markRed { color: var(--therewasno); }
+  .markOrange { color: var(--ThereIsAReason); }

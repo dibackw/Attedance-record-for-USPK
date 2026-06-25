@@ -19,6 +19,13 @@ interface Poll {
   timeLeft?: number;
 }
 
+const getCurrentDatetimeLocal = () => {
+  const now = new Date();
+  const offset = now.getTimezoneOffset();
+  const localTime = new Date(now.getTime() - offset * 60000);
+  return localTime.toISOString().slice(0, 16);
+};
+
 const TeacherPolls = () => {
   const user = getUser();
   const [disciplines, setDisciplines] = useState<Discipline[]>([]);
@@ -94,11 +101,43 @@ const TeacherPolls = () => {
 
   const handleFinishPoll = async () => {
     if (!activePoll) return;
+  
+    // 1. Завершаем опрос
     await fetch(`/api/polls/${activePoll.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: 'completed' })
     });
+  
+    // 2. Берём всех студентов группы
+    const studentsRes = await fetch(`/api/students?groupId=${activePoll.groupId}`);
+    const students = await studentsRes.json();
+  
+    // 3. Берём кто уже отметился по этому опросу
+    const attendanceRes = await fetch(`/api/attendance?disciplineId=${activePoll.disciplineId}&groupId=${activePoll.groupId}`);
+    const attended = await attendanceRes.json();
+  
+    const today = new Date();
+    const date = `${today.getDate().toString().padStart(2,'0')}.${(today.getMonth()+1).toString().padStart(2,'0')}.${today.getFullYear()}`;
+  
+    // 4. Всем кто НЕ отметился — ставим 'н'
+    const markedIds = attended.map((a: any) => a.studentId);
+    const absent = students.filter((s: any) => !markedIds.includes(s.id));
+  
+    await Promise.all(absent.map((s: any) =>
+      fetch('/api/attendance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentId: s.id,
+          disciplineId: String(activePoll.disciplineId),
+          groupId: String(activePoll.groupId),
+          date,
+          status: 'н',
+        }),
+      })
+    ));
+  
     setPolls(prev => prev.map(p =>
       p.id === activePoll.id ? { ...p, status: 'completed' } : p
     ));
@@ -106,10 +145,10 @@ const TeacherPolls = () => {
   };
 
   const getDisciplineName = (id: number) =>
-    disciplines.find(d => d.id === id)?.name ?? '—';
-
+    disciplines.find(d => String(d.id) === String(id))?.name ?? '—';
+  
   const getGroupName = (id: number) =>
-    groups.find(g => g.id === id)?.name ?? '—';
+    groups.find(g => String(g.id) === String(id))?.name ?? '—';
 
   const completedPolls = polls.filter(p => p.status === 'completed');
 
@@ -149,11 +188,14 @@ const TeacherPolls = () => {
               </select>
             </div>
             <button
-              className={styles.startBtn}
-              onClick={() => setShowModal(true)}
+            className={styles.startBtn}
+              onClick={() => {
+                setSelectedDatetime(getCurrentDatetimeLocal());
+                setShowModal(true);
+              }}
             >
               Запустить опрос присутствия
-            </button>
+          </button>
           </div>
 
           {/* Активный опрос или баннер */}
@@ -161,9 +203,10 @@ const TeacherPolls = () => {
             <div className={styles.activePoll}>
               <div className={styles.activePollLeft}>
                 {/* ↓ Зелёный лейбл */}
-                <p className={styles.activeLabel}>Активный опрос</p>
                 <p className={styles.activeSubLabel}>Дисциплина</p>
                 <p className={styles.activeValue}>{getDisciplineName(activePoll.disciplineId)}</p>
+                <p className={styles.activeSubLabel}>Группа</p>
+                <p className={styles.activeValue}>{getGroupName(activePoll.groupId)}</p>
                 <p className={styles.activeSubLabel}>Дата и время занятия</p>
                 <p className={styles.activeValue}>{activePoll.datetime}</p>
               </div>
@@ -264,6 +307,7 @@ const TeacherPolls = () => {
               <input
                 className={styles.modalInput}
                 type="datetime-local"
+                readOnly
                 value={selectedDatetime}
                 onChange={e => setSelectedDatetime(e.target.value)}
               />

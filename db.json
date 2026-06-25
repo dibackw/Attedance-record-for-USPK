@@ -13,14 +13,14 @@
       "login": "student1",
       "password": "student123",
       "fullName": "Кузнецов Артём Александрович",
-      "groupId": 1
+      "groupId": "1"
     },
     {
       "id": "3",
       "login": "headman1",
       "password": "headman123",
       "fullName": "Весельчук Ульяна Романовна",
-      "groupId": 1,
+      "groupId": "1",
       "role": "headman"
     }
   ],
@@ -82,7 +82,48 @@
       "curatorId": "1"
     }
   ],
-  "attendance": [],
+  "attendance": [
+    {
+      "studentId": "3",
+      "disciplineId": "1",
+      "groupId": "1",
+      "date": "25.06.2026",
+      "status": "п",
+      "id": "XQJJOy5ATIQ"
+    },
+    {
+      "studentId": "3",
+      "disciplineId": "1",
+      "groupId": "1",
+      "date": "25.06.2026",
+      "status": "п",
+      "id": "dBQJAG09dyE"
+    },
+    {
+      "studentId": "3",
+      "disciplineId": 1,
+      "groupId": 1,
+      "date": "25.06.2026",
+      "status": "п",
+      "id": "N4VXQJWLK-c"
+    },
+    {
+      "studentId": "1",
+      "disciplineId": 1,
+      "groupId": 1,
+      "date": "25.06.2026",
+      "status": "п",
+      "id": "VQ9N0jQN1iQ"
+    },
+    {
+      "studentId": "3",
+      "disciplineId": 1,
+      "groupId": 1,
+      "date": "25.06.2026",
+      "status": "п",
+      "id": "lW2Z_RtsMNE"
+    }
+  ],
   "disciplines": [
     {
       "id": "1",
@@ -115,64 +156,25 @@
   ],
   "polls": [
     {
-      "id": "1",
-      "disciplineId": 7,
+      "disciplineId": 1,
       "groupId": 1,
       "teacherId": "1",
-      "datetime": "14.05.2026 10:30",
-      "status": "completed",
+      "datetime": "25.06.2026 13:22",
+      "status": "active",
       "totalStudents": 25,
-      "responded": 22
+      "responded": 1,
+      "id": "1jSzmTtkyA8"
     },
     {
       "disciplineId": 1,
       "groupId": 1,
       "teacherId": "1",
-      "datetime": "24.06.2026 21:03",
-      "status": "completed",
-      "totalStudents": 25,
-      "responded": 0,
-      "id": "in5veVWOYf4"
-    },
-    {
-      "disciplineId": 7,
-      "groupId": 1,
-      "teacherId": "1",
-      "datetime": "24.06.2026 21:05",
+      "datetime": "25.06.2026 15:18",
       "status": "active",
       "totalStudents": 25,
       "responded": 0,
-      "id": "B3QK4s-XIWU"
-    },
-    {
-      "disciplineId": 1,
-      "groupId": 2,
-      "teacherId": "1",
-      "datetime": "24.06.2026 21:14",
-      "status": "completed",
-      "totalStudents": 25,
-      "responded": 0,
-      "id": "4gV-41L1QCE"
-    },
-    {
-      "disciplineId": 1,
-      "groupId": 1,
-      "teacherId": "3",
-      "datetime": "24.06.2026 22:27",
-      "status": "completed",
-      "totalStudents": 25,
-      "responded": 0,
-      "id": "IpPWliVOnUw"
-    },
-    {
-      "disciplineId": 2,
-      "groupId": 1,
-      "teacherId": "3",
-      "datetime": "24.06.2026 22:40",
-      "status": "active",
-      "totalStudents": 25,
-      "responded": 0,
-      "id": "JNKlXd2oUjI"
+      "id": "CUStZp0tWJY"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

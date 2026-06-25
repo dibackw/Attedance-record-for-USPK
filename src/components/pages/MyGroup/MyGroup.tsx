@@ -46,11 +46,12 @@ const MyGroup = () => {
       });
 
     // Загружаем студентов группы
-    fetch(`/api/students?groupId=${user.groupId}`)
+    fetch(`/api/students`)
       .then(res => res.json())
       .then((list: Student[]) => {
-        setStudents(list.sort((a, b) => a.fullName.localeCompare(b.fullName, 'ru')));
-        const h = list.find(s => s.role === 'headman');
+        const filtered = list.filter(s => String(s.groupId) === String(user.groupId));
+        setStudents(filtered.sort((a, b) => a.fullName.localeCompare(b.fullName, 'ru')));
+        const h = filtered.find(s => s.role === 'headman');
         setHeadman(h ?? null);
       });
   }, []);

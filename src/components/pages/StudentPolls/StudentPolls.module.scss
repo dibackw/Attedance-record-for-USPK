@@ -1,0 +1,125 @@
+.wrapper {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  // Активный опрос
+  .activeBanner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--lightPurple);
+    border: 1px solid var(--heading);
+    border-radius: 10px;
+    padding: 20px 30px;
+  }
+  
+  .activeBannerLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .activeTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--heading);
+    margin: 0;
+  }
+  
+  .activeLabel {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text2);
+    margin: 0;
+  }
+  
+  .activeValue {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  .markBtn {
+    background-color: var(--backgroundOfSub-items);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+  
+    &:hover { opacity: 0.9; }
+  }
+  
+  .markedText {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--Gren);
+    margin: 0;
+  }
+  
+  // Нет опроса
+  .noPoll {
+    background-color: var(--greenBG);
+    border: 1px solid var(--Gren);
+    border-radius: 8px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .noPollTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--Gren);
+    margin: 0;
+  }
+  
+  .noPollSub {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  // История
+  .historyTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .th {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: center;
+  }
+  
+  .td {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--black);
+    border: 1px solid var(--strokePanel);
+    padding: 12px 20px;
+    text-align: center;
+  }
+  
+  .markGreen { color: var(--IsPresent); }
+  .markRed { color: var(--therewasno); }
+  .markOrange { color: var(--ThereIsAReason); }
